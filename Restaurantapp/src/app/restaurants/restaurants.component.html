@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-4">
+        <app-pagination [actualPage]="params.page" [pageSize]="params.pageSize" [collectionSize]="restaurants.count" (pagechange)="pageChange($event)"></app-pagination>
+    </div>
+    <div class="col-4 offset-2">
+        <label for="in1">Price from:</label>
+        <input type="number" name="in1" [(ngModel)]="params.filter.priceFrom" (change)="getRestaurants()">
+        <label for="in2">Price to:</label>
+        <input type="number" name="in2" [(ngModel)]="params.filter.priceTo" (change)="getRestaurants()">
+    </div>
+</div>
+<div class="row">
+    <div *ngFor="let restaurant of restaurants.results" class="col-4">
+        <div><a (click)="openDialog(restaurant)" style="font-weight: bold; color:blue" >{{restaurant.name}}</a></div>
+        <small>{{restaurant.description}}</small>
+        <div>
+            <small>Rating:</small>
+            <app-ratings [grade]="restaurant.rating" [type]="'star'"></app-ratings>
+        </div>
+        <div>
+            <small>Price:</small>
+            <app-ratings [grade]="restaurant.price" [type]="'coin'"></app-ratings>
+        </div>
+    </div>
+</div>
+

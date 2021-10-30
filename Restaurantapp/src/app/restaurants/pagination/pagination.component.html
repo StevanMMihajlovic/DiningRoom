@@ -1,0 +1,5 @@
+<ul class="pagination">
+    <li><button class="btn btn-primary" (click)="changePage(actualPage-1)" *ngIf="actualPage>1">Previous</button></li>
+    <li><button class="btn btn-primary" (click)="changePage(i)" *ngFor="let i of pages">{{i}}</button></li>
+    <li><button class="btn btn-primary" (click)="changePage(actualPage+1)" *ngIf="actualPage*pageSize<=collectionSize">Next</button></li>
+</ul>
